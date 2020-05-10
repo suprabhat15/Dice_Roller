@@ -2,77 +2,44 @@ package com.example.diceroller   //Dated:- 10th May,2020  //Day 1 of 30daysofKot
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
+//The namespace for the Android Jetpack libraries is androidx.
+
+// The app:srcCompat attribute uses the Android X library to support vector drawables in older versions of Android, back to API level 7.
 class MainActivity : AppCompatActivity() {
 
+   lateinit var diceImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        diceImage = findViewById(R.id.dice_image)
+
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener{rollDice()}
 
-        val countButton: Button = findViewById(R.id.countup_button)
-        countButton.setOnClickListener{countUp()}
 
-        val countButton2: Button = findViewById(R.id.countdown_button)
-        countButton2.setOnClickListener{countDown()}
-
-        val reset: Button = findViewById(R.id.reset_button)
-        reset.setOnClickListener{ resetfun()}
     }
 
         private fun rollDice(){
-           // Toast.makeText(this,"Button Clicked",Toast.LENGTH_SHORT).show()
             val randomInt = (1..6).random()
-            val resultText: TextView = findViewById(R.id.result_text)
-            //resultText.text = getString(R.string.dice_rolled)
-            resultText.text = randomInt.toString()
-        }
+//            val diceImage: ImageView = findViewById(R.id.dice_image)
 
-    private fun countUp(){
-        val resultText: TextView = findViewById(R.id.result_text)
-        if(resultText.text == "Hello World"){
-            resultText.text ="1"
-        }
-        else{
-            var resultInt = resultText.text.toString().toInt()
-
-            if(resultInt < 6){
-                resultInt = resultInt + 1
-                resultText.text = resultInt.toString()
+            val drawableResource = when (randomInt){
+                1 -> R.drawable.dice_1
+                2 -> R.drawable.dice_2
+                3 -> R.drawable.dice_3
+                4 -> R.drawable.dice_4
+                5 -> R.drawable.dice_5
+                else -> R.drawable.dice_6
             }
 
-        }
-
-    }
-
-    private fun countDown(){
-        val resultText: TextView = findViewById(R.id.result_text)
-        if(resultText.text == "Hello World"){
-            resultText.text ="0"
-        }
-        else{
-            var resultInt = resultText.text.toString().toInt()
-
-            if(resultInt <= 6 && resultInt >0 ){
-                resultInt = resultInt - 1
-                resultText.text = resultInt.toString()
-            }
-            else{
-                Toast.makeText(this,"Numbers will be negative.",Toast.LENGTH_SHORT).show()
-            }
+            diceImage.setImageResource(drawableResource)
 
         }
 
-    }
-
-    private fun resetfun()
-    {
-        val resetText: TextView = findViewById(R.id.result_text)
-        resetText.text = "0"
-    }
 }

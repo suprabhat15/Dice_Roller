@@ -9,11 +9,21 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.diceroller"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+     //   When you build your app, the Gradle build process generates a PNG file from each of the vector files,
+        // and those PNG files are used on any Android device below 21.
+        // These extra PNG files increase the size of your app.
+        // Unnecessarily large apps aren't great—they make downloads slower for users
+        // and take up more of their devices' limited space.
+        // Large apps also have a higher chance of being uninstalled,
+        // and of users failing to download or canceling downloads of those apps.
+       // The good news is that there is an Android X compatibility library
+        // for vector drawables all the way back to API level 7.
     }
     buildTypes {
         release {

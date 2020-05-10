@@ -29,5 +29,12 @@
         android:layout_height="wrap_content"
         android:text="@string/count_up"/>
 
+    <Button
+        android:id="@+id/countdown_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/count_down"/>
+
 
 </LinearLayout>

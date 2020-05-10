@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         val countButton: Button = findViewById(R.id.countup_button)
         countButton.setOnClickListener{countUp()}
+
+        val countButton2: Button = findViewById(R.id.countdown_button)
+        countButton2.setOnClickListener{countDown()}
     }
 
         private fun rollDice(){
@@ -38,6 +41,26 @@ class MainActivity : AppCompatActivity() {
             if(resultInt < 6){
                 resultInt = resultInt + 1
                 resultText.text = resultInt.toString()
+            }
+
+        }
+
+    }
+
+    private fun countDown(){
+        val resultText: TextView = findViewById(R.id.result_text)
+        if(resultText.text == "Hello World"){
+            resultText.text ="0"
+        }
+        else{
+            var resultInt = resultText.text.toString().toInt()
+
+            if(resultInt <= 6 && resultInt >0 ){
+                resultInt = resultInt - 1
+                resultText.text = resultInt.toString()
+            }
+            else{
+                Toast.makeText(this,"Numbers will be negative.",Toast.LENGTH_SHORT).show()
             }
 
         }
